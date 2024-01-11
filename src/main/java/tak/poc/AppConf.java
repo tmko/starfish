@@ -9,7 +9,7 @@ import java.util.Properties;
 
 @Slf4j
 @ToString(exclude = "password")
-public final class AppConf {
+public class AppConf {
     public static final String DEFAULT_CONFIG = "application.properties";
     public static final String DEFAULT_SECRET = "application.secret";
     private static final AppConf SINGLETON = new AppConf();
