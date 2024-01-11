@@ -1,22 +1,24 @@
 package tak.poc;
 
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.LoadState;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import tak.poc.bankGeneral.BlankBrowser;
+import tak.poc.webpage.EasywebLaunch;
+import tak.poc.webpage.HoldBrowserOpen;
 
 
 @Slf4j
 public class Processor {
 
     public Step buildProcssingStepDAG() {
-        return new BlankBrowser();
+        Step step1 = new EasywebLaunch();
+        Step step3 = new HoldBrowserOpen();
+
+        step1.next(step3);
+        return step1;
+
     }
 
     public void mainProcessingByStepAsDAG () {
@@ -24,9 +26,12 @@ public class Processor {
                 .setHeadless(false)
                 .setChromiumSandbox(true);
 
+
         try (Playwright playwright = Playwright.create()) {
             try (Browser browser = playwright.chromium().launch(options)) {
                 try (BrowserContext context = browser.newContext()) {
+                    context.setDefaultTimeout(60_000d);
+                    context.setDefaultNavigationTimeout(50_000d);
                     try (Page newBlankPage = context.newPage()) {
                         try {
                             buildProcssingStepDAG().apply(newBlankPage);

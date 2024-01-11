@@ -1,4 +1,4 @@
-package tak.poc.bankGeneral;
+package tak.poc.webpage;
 
 import com.microsoft.playwright.Page;
 import tak.poc.Processor;

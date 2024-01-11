@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+import tak.poc.AppConf;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,5 +10,7 @@ class MainTest {
         assertEquals("1.0", AppConf.get().getVersion());
         assertEquals("fakeId", AppConf.get().getUsername());
         assertFalse(AppConf.get().toString().contains("password"));
+
+
     }
 }

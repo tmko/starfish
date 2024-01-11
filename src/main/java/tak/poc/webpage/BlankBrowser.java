@@ -1,4 +1,4 @@
-package tak.poc.bankGeneral;
+package tak.poc.webpage;
 
 import com.microsoft.playwright.Page;
 import lombok.extern.slf4j.Slf4j;

@@ -1,3 +1,5 @@
+package tak.poc;
+
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -9,9 +11,12 @@ import java.util.Properties;
 
 @Slf4j
 @ToString(exclude = "password")
-public class AppConf {
-    public static final String DEFAULT_CONFIG = "application.properties";
-    public static final String DEFAULT_SECRET = "application.secret";
+public final class AppConf {
+    public static  final String LOGIN_USERNAME_LABEL = "Username or Access Card";
+    public static  final String LOGIN_PASSWORD_LABEL = "Password";
+
+    public static final String DEFAULT_CONFIG = "/application.properties";
+    public static final String DEFAULT_SECRET = "/application.secret";
     private static final AppConf SINGLETON = new AppConf();
 
     @Getter private String password;
