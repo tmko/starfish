@@ -12,7 +12,9 @@ public class LocalizationLoader {
 
     private ResourceBundle bundle = ResourceBundle.getBundle(LOCALIZED_MESSAGE, Locale.getDefault());
 
-    private LocalizationLoader (String language, String country) {
+    public LocalizationLoader () {}
+
+    public LocalizationLoader (String language, String country) {
         if ( language != null && country != null ) {
             bundle = ResourceBundle.getBundle(LOCALIZED_MESSAGE, Locale.of(language, country));
         }

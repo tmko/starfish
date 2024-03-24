@@ -6,6 +6,8 @@ import tak.poc.exception.RecordedException;
 import tak.poc.facet.IntroJsFacet;
 import tak.poc.facet.PlaywrightFacet;
 
+import java.io.IOException;
+
 @Slf4j
 public class EasywebLaunch extends WebStep {
     private static final String TOOLTIP = "We took privacy seriously,</br>Please manually enter username and password,</br> than click here";
@@ -39,7 +41,11 @@ public class EasywebLaunch extends WebStep {
 
 
     protected void action (PlaywrightFacet facet) throws RecordedException {
-        facet.insertContentToDom(IntroJsFacet.cssContent(), IntroJsFacet.jsContent());
+        try {
+            facet.insertContentToDom(IntroJsFacet.cssContent(), IntroJsFacet.jsContent());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         facet.addHtmlAttributeToButton("Password", "","");
         facet.eval(IntroJsFacet.triggerJSCall());
 

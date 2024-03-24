@@ -6,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import tak.poc.exception.RecordedException;
 import tak.poc.facet.PlaywrightFacet;
 
-import java.util.Optional;
-
 @AllArgsConstructor
 @Slf4j
 @ToString

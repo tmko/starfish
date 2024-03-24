@@ -4,16 +4,15 @@ import com.microsoft.playwright.*;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import tak.poc.app.PropertiesLoader;
 import tak.poc.app.WebStep;
 import tak.poc.facet.PlaywrightFacet;
 import tak.poc.webpage.BlankBrowser;
 import tak.poc.webpage.EasywebLaunch;
 import tak.poc.webpage.HoldBrowserOpen;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * <img src="doc-files/image3-7.png" alt="Example of the application GUI"/><br>
@@ -25,9 +24,12 @@ import java.util.Properties;
 @Getter
 @ToString
 public final class Main {
-    public static Properties CONF = null;
-    public static void main(final String[] args) {
-        CONF = new PropertiesLoader().getConfiguration(null);
+    public static Configuration CONF;
+
+
+
+    public static void main(final String[] args) throws IOException {
+        CONF = Configuration.init(System.getProperties());
         log.info(CONF.toString());
         new Main().mainProcessingByStepAsDAG();
     }

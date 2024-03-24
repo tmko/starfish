@@ -2,14 +2,11 @@ package tak.poc.facet;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Response;
 import com.microsoft.playwright.options.AriaRole;
-import com.microsoft.playwright.options.WaitUntilState;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-import java.util.Objects;
 
 @Slf4j
 @AllArgsConstructor
