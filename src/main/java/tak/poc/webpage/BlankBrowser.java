@@ -1,24 +1,17 @@
 package tak.poc.webpage;
 
-import com.microsoft.playwright.Page;
 import lombok.extern.slf4j.Slf4j;
-import tak.poc.Processor;
+import tak.poc.app.WebStep;
+import tak.poc.facet.PlaywrightFacet;
 
 @Slf4j
-public class BlankBrowser extends Processor.Step {
-
-    protected void setup (Page page) {
-        String url = "https://authentication.td.com/uap-ui/?consumer=easyweb&locale=en_CA#/uap/login";
-        log.info("Page URL {}", url);
-        page.navigate(url);
-    }
+public class BlankBrowser extends WebStep {
 
     public BlankBrowser() {
-        super("BlankBrowser", null);
+        super(BlankBrowser.class.getCanonicalName());
     }
 
-    protected void processStep(Page page) {
-        return;
+    protected void setup (PlaywrightFacet facet) {
+        facet.go("about:blank");
     }
-
 }

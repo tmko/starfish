@@ -1,22 +1,16 @@
 package tak.poc.webpage;
 
-import com.microsoft.playwright.Page;
-import tak.poc.Processor;
+import tak.poc.app.WebStep;
+import tak.poc.exception.RecordedException;
+import tak.poc.facet.PlaywrightFacet;
 
-import java.util.Objects;
-
-public class HoldBrowserOpen extends Processor.Step {
+public class HoldBrowserOpen extends WebStep {
     public HoldBrowserOpen() {
-        super("HoldBrowserOpen", null);
+        super(HoldBrowserOpen.class.getCanonicalName());
     }
 
-    protected void action(Page page) {
-        if (Objects.isNull(page)) {
-            return;
-        }
-
-        Runnable DoNothingButHoldBrowserOpen = () -> {};
-        page.waitForClose(DoNothingButHoldBrowserOpen);
+    protected void action(PlaywrightFacet facet) throws RecordedException {
+        facet.holdOpen();
     }
 
 }
